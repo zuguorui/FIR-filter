@@ -47,7 +47,13 @@ while true
 end
 
 % 平滑滤波器，避免出现吉布斯现象
-slope = 0.5;
+maxGainDiff = 0;
+for i = 1 : length(gain) - 1
+    if maxGainDiff < abs(gain(i) - gain(i + 1))
+        maxGainDiff = abs(gain(i) - gain(i + 1));
+    end
+end
+slope = N * 0.000015 * maxGainDiff;
 smoothFilter = smooth_filter(H_amp(1:M), slope, freqStep);
 H_amp(1:M) = smoothFilter;
 % dB值换算成系数

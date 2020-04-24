@@ -3,7 +3,7 @@ function fir_test()
 clear all;
 close all;
 
-N = 255;
+N = 256;
 sampleRate = 8000;
 freqs = [100, 500, 1000];
 gain = [70, 0, 30];
