@@ -75,14 +75,14 @@ title('H_amp');
 
 % 到这步幅度就计算完了，接着计算相位
 w0 = 2 * pi / N;
-theta = (w0 * 1) .* [0 : 1 : N-1];
-H_phase = exp(-1i .* theta);
+theta = (w0 * M) .* [0 : 1 : N-1];
+H_phase = exp(1i .* theta);
 
 H = H_amp .* H_phase;
 
 h = ifft(H, N);
 
-h = circshift(h',M)';
+% h = circshift(h',M)';
 
 h = real(h);
 
